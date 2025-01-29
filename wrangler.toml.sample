@@ -1,8 +1,19 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "decap-proxy"
+name = "Sveltia-proxy"
 main = "src/index.ts"
 compatibility_date = "2024-04-19"
 compatibility_flags = ["nodejs_compat"]
+
+workers.dev = false
+route = [ pattern = "https://vet-echo.nl/", zone_name = "Vet-echo.nl]
+
+kv_namespaces = [
+	{binding = "<MY_NAMESPACE>", id = "<KV_ID>" }
+]
+
+[env.staging]
+name = "my-worker-stagimg"
+route = { pattern = "staging.vet-echo.nl", zone_name = "vet-echo.nl" }
 
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Docs:
